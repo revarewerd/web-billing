@@ -1,0 +1,707 @@
+/* ============================================
+   ExtJS 4.2.1 Gray Theme - Billing Admin
+   Точная копия legacy Stels billing
+   ============================================ */
+
+/* CSS Variables - ExtJS 4.2.1 Gray Theme (точное соответствие ext-all-gray.css) */
+:root {
+  /* Toolbar */
+  --ext-toolbar-bg-start: #e6e6e6;
+  --ext-toolbar-bg-end: #efefef;
+  --ext-border: #b5b8c8;
+  
+  /* Buttons */
+  --ext-btn-bg-start: #ffffff;
+  --ext-btn-bg-end: #eeeeee;
+  --ext-btn-border: #bbbbbb;
+  --ext-btn-hover-bg-start: #e4f3ff;
+  --ext-btn-hover-bg-end: #d9edff;
+  --ext-btn-pressed-bg: #b6cfe4;
+  
+  /* Tabs */
+  --ext-tab-bg-start: #dcdcdc;
+  --ext-tab-bg-end: #eaeaea;
+  --ext-tab-active-bg: #ffffff;
+  --ext-tab-border: #b5b8c8;
+  
+  /* Grid */
+  --ext-grid-header-bg-start: #f9f9f9;
+  --ext-grid-header-bg-end: #e3e4e6;
+  --ext-grid-row-selected: #dfe8f6;
+  
+  /* Text */
+  --ext-text: #333333;
+  --ext-text-light: #666666;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: tahoma, arial, verdana, sans-serif;
+  font-size: 11px;
+  color: var(--ext-text);
+  background: #f0f0f0;
+}
+
+/* Main Layout */
+.billing-app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+/* Tab Panel */
+.tab-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tab-bar {
+  display: flex;
+  align-items: flex-end;
+  background: linear-gradient(to bottom, var(--ext-toolbar-bg-start), var(--ext-toolbar-bg-end));
+  border-bottom: 1px solid var(--ext-border);
+  padding: 4px 4px 0 4px;
+  min-height: 28px;
+}
+
+.tab-bar-inner {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: linear-gradient(to bottom, var(--ext-tab-bg-start), var(--ext-tab-bg-end));
+  border: 1px solid var(--ext-tab-border);
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-right: 2px;
+  font-size: 11px;
+  color: var(--ext-text);
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tab-item:hover {
+  background: linear-gradient(to bottom, #eaeaea, #f5f5f5);
+}
+
+.tab-item.active {
+  background: var(--ext-tab-active-bg);
+  border-bottom: 1px solid var(--ext-tab-active-bg);
+  margin-bottom: -1px;
+  font-weight: bold;
+}
+
+/* Legacy: вкладки без иконок — только текст */
+
+.tab-bar-fill {
+  flex: 1;
+}
+
+.tab-bar-logout {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  margin-bottom: 4px;
+  background: linear-gradient(to bottom, var(--ext-btn-bg-start), var(--ext-btn-bg-end));
+  border: 1px solid var(--ext-btn-border);
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+  color: var(--ext-text);
+}
+
+.tab-bar-logout:hover {
+  background: linear-gradient(to bottom, var(--ext-btn-hover-bg-start), var(--ext-btn-hover-bg-end));
+}
+
+/* Tab Content */
+.tab-content {
+  flex: 1;
+  background: #ffffff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Grid Panel */
+.grid-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Grid Toolbar */
+.grid-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  background: linear-gradient(to bottom, var(--ext-toolbar-bg-start), var(--ext-toolbar-bg-end));
+  border-bottom: 1px solid var(--ext-border);
+}
+
+.grid-toolbar-separator {
+  width: 1px;
+  height: 20px;
+  background: var(--ext-border);
+  margin: 0 4px;
+}
+
+.grid-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: linear-gradient(to bottom, var(--ext-btn-bg-start), var(--ext-btn-bg-end));
+  border: 1px solid var(--ext-btn-border);
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+  color: var(--ext-text);
+}
+
+.grid-btn:hover {
+  background: linear-gradient(to bottom, var(--ext-btn-hover-bg-start), var(--ext-btn-hover-bg-end));
+}
+
+.grid-btn:active {
+  background: var(--ext-btn-pressed-bg);
+}
+
+.grid-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.grid-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+.grid-search {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.grid-search input {
+  padding: 4px 8px;
+  border: 1px solid var(--ext-border);
+  border-radius: 3px;
+  font-size: 11px;
+  width: 150px;
+}
+
+.grid-search-label {
+  font-size: 11px;
+  color: var(--ext-text);
+  white-space: nowrap;
+}
+
+/* Grid Summary */
+.grid-summary {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  background: #f5f5f5;
+  border-bottom: 1px solid var(--ext-border);
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.grid-summary span {
+  margin-right: 20px;
+}
+
+/* Grid Header */
+.grid-header {
+  display: flex;
+  background: linear-gradient(to bottom, var(--ext-grid-header-bg-start), var(--ext-grid-header-bg-end));
+  border-bottom: 1px solid var(--ext-border);
+}
+
+.grid-header-cell {
+  padding: 6px 8px;
+  font-weight: bold;
+  font-size: 11px;
+  color: var(--ext-text);
+  border-right: 1px solid #d0d0d0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.grid-header-cell:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.grid-header-cell.sortable::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+}
+
+/* Grid Body */
+.grid-body {
+  flex: 1;
+  overflow: auto;
+}
+
+.grid-row {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Legacy: trackOver: false — нет hover подсветки на строках */
+/* Legacy: нет alternating row colors */
+
+.grid-row.selected .grid-cell {
+  background-color: var(--ext-grid-row-selected);
+}
+
+.grid-cell {
+  padding: 4px 8px;
+  font-size: 11px;
+  border-right: 1px solid #e8e8e8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.grid-cell.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.grid-cell.action img {
+  width: 16px;
+  height: 16px;
+}
+
+.grid-cell a {
+  color: #1a5276;
+  text-decoration: none;
+}
+
+.grid-cell a:hover {
+  text-decoration: underline;
+}
+
+/* Balance link style */
+.ballink {
+  cursor: pointer;
+}
+
+.ballink:hover {
+  text-decoration: underline;
+}
+
+/* Row colors — 1:1 как в legacy inline CSS */
+.grid-row.blocked .grid-cell {
+  background-color: #ffe2e2;
+}
+
+.grid-row.warning .grid-cell {
+  background-color: #fffacd;
+}
+
+/* Выделение приоритетнее цвета строки (как в ExtJS) */
+.grid-row.selected.blocked .grid-cell,
+.grid-row.selected.warning .grid-cell {
+  background-color: var(--ext-grid-row-selected);
+}
+
+/* Status bar */
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  background: linear-gradient(to bottom, var(--ext-toolbar-bg-start), var(--ext-toolbar-bg-end));
+  border-top: 1px solid var(--ext-border);
+  min-height: 32px;
+}
+
+.status-bar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--ext-btn-bg-start), var(--ext-btn-bg-end));
+  border: 1px solid var(--ext-btn-border);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.status-bar-btn:hover {
+  background: linear-gradient(to bottom, var(--ext-btn-hover-bg-start), var(--ext-btn-hover-bg-end));
+}
+
+.status-bar-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status-bar-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Modal / Window */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-window {
+  background: #fff;
+  border: 1px solid var(--ext-border);
+  border-radius: 0;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+  min-width: 400px;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: linear-gradient(to bottom, #505050, #404040);
+  color: #fff;
+  border-radius: 0;
+}
+
+.modal-title {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.modal-close:hover {
+  background: rgba(255,255,255,0.2);
+  border-radius: 3px;
+}
+
+.modal-body {
+  padding: 16px;
+  overflow: auto;
+  flex: 1;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #f5f5f5;
+  border-top: 1px solid var(--ext-border);
+}
+
+/* Form styles */
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.form-label {
+  width: 150px;
+  font-size: 11px;
+  color: var(--ext-text);
+  text-align: right;
+  padding-right: 12px;
+}
+
+.form-input {
+  flex: 1;
+  padding: 4px 8px;
+  border: 1px solid var(--ext-border);
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+.form-input:focus {
+  border-color: #7eb5e7;
+  outline: none;
+  box-shadow: 0 0 3px rgba(126, 181, 231, 0.5);
+}
+
+.form-select {
+  flex: 1;
+  padding: 4px 8px;
+  border: 1px solid var(--ext-border);
+  border-radius: 3px;
+  font-size: 11px;
+  background: #fff;
+}
+
+.form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Buttons */
+.btn {
+  padding: 4px 12px;
+  background: linear-gradient(to bottom, var(--ext-btn-bg-start), var(--ext-btn-bg-end));
+  border: 1px solid var(--ext-btn-border);
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+  color: var(--ext-text);
+}
+
+.btn:hover {
+  background: linear-gradient(to bottom, var(--ext-btn-hover-bg-start), var(--ext-btn-hover-bg-end));
+}
+
+.btn:active {
+  background: var(--ext-btn-pressed-bg);
+}
+
+.btn-primary {
+  background: linear-gradient(to bottom, #7eb5e7, #5fa2d9);
+  border-color: #4a8bc2;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to bottom, #8fc1ed, #6aade0);
+}
+
+/* Grayed text */
+.grayedText {
+  color: #a9a9a9;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* ============================================
+   Accordion Sections
+   ============================================ */
+.accordion-section {
+  border: 1px solid var(--ext-border);
+  margin-bottom: 8px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: linear-gradient(to bottom, var(--ext-grid-header-bg-start), var(--ext-grid-header-bg-end));
+  border-bottom: 1px solid var(--ext-border);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.accordion-header:hover {
+  background: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
+}
+
+.accordion-content {
+  padding: 10px;
+  background: #fff;
+}
+
+/* ============================================
+   Form Rows (for modals)
+   ============================================ */
+.form-row {
+  margin-bottom: 12px;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+  color: var(--ext-text);
+}
+
+.form-row input[type="text"],
+.form-row input[type="number"],
+.form-row input[type="email"],
+.form-row input[type="password"],
+.form-row textarea,
+.form-row select {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--ext-border);
+  border-radius: 3px;
+  font-size: 11px;
+  font-family: inherit;
+}
+
+.form-row input:focus,
+.form-row textarea:focus,
+.form-row select:focus {
+  outline: none;
+  border-color: #5fa2d9;
+  box-shadow: 0 0 3px rgba(95, 162, 217, 0.3);
+}
+
+.form-row small {
+  display: block;
+  margin-top: 4px;
+  color: var(--ext-text-light);
+  font-size: 10px;
+}
+
+.form-row.checkbox-row label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.form-row.checkbox-row input[type="checkbox"] {
+  width: auto;
+}
+
+.balance-row .balance-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ============================================
+   Simple Table (for modals)
+   ============================================ */
+.simple-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.simple-table th,
+.simple-table td {
+  padding: 6px 8px;
+  border: 1px solid var(--ext-border);
+  text-align: left;
+}
+
+.simple-table th {
+  background: linear-gradient(to bottom, var(--ext-grid-header-bg-start), var(--ext-grid-header-bg-end));
+  font-weight: bold;
+}
+
+.simple-table tbody tr:nth-child(even) {
+  background: var(--ext-grid-row-alt);
+}
+
+.simple-table tbody tr:hover {
+  background: var(--ext-grid-row-hover);
+}
+
+/* ============================================
+   X-Btn (ExtJS style button)
+   ============================================ */
+.x-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: linear-gradient(to bottom, var(--ext-btn-bg-start), var(--ext-btn-bg-end));
+  border: 1px solid var(--ext-btn-border);
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+  font-family: inherit;
+  color: var(--ext-text);
+}
+
+.x-btn:hover:not(:disabled) {
+  background: linear-gradient(to bottom, var(--ext-btn-hover-bg-start), var(--ext-btn-hover-bg-end));
+}
+
+.x-btn:active:not(:disabled) {
+  background: var(--ext-btn-pressed-bg);
+}
+
+.x-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.x-btn.primary {
+  background: linear-gradient(to bottom, #7eb5e7, #5fa2d9);
+  border-color: #4a8bc2;
+  color: #fff;
+}
+
+.x-btn.primary:hover:not(:disabled) {
+  background: linear-gradient(to bottom, #8fc1ed, #6aade0);
+}
+
