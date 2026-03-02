@@ -164,15 +164,6 @@ export function RecycleBinPanel() {
     </>
   );
 
-  // Обработчик выбора строки
-  const handleRowClick = (record: TrashItem) => {
-    const newSelected = new Set(selectedIds);
-    // Одиночный выбор (для множественного нужен keyboard event)
-    newSelected.clear();
-    newSelected.add(record._id);
-    setSelectedIds(newSelected);
-  };
-
   return (
     <GridPanel
       data={filteredItems}
